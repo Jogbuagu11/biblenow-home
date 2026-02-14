@@ -1,0 +1,9 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": null,
+  "rewrites": [
+    { "source": "/signup", "destination": "/web/signup.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

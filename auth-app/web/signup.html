@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join BibleNOW</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0e0e0e; color: #eee; margin: 0; display: flex; min-height: 100vh; align-items: center; justify-content: center; }
+    .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 16px; padding: 28px; max-width: 420px; width: 92%; text-align: center; }
+    .title { font-size: 22px; font-weight: 700; margin: 0 0 8px; }
+    .sub { color: #b5b5b5; font-size: 15px; margin: 0 0 16px; }
+    .btn { display: inline-block; margin-top: 10px; padding: 14px 22px; background: #D4AF37; color: #111; border-radius: 10px; font-weight: 700; text-decoration: none; }
+    .hint { color: #8c8c8c; font-size: 13px; margin-top: 14px; }
+    .links { margin-top: 16px; font-size: 14px; }
+    .links a { color: #FFD765; text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="title">Opening BibleNOW…</div>
+    <p class="sub">If the app doesn’t open automatically, tap the button below.</p>
+    <a id="openBtn" class="btn" href="#">Open BibleNOW</a>
+    <div class="hint" id="status">Preparing…</div>
+    <div class="links" id="fallback" style="display:none">
+      If nothing happens:
+      <div><a id="storeLink" href="#">Get the app</a></div>
+    </div>
+  </div>
+  <script>
+    const qp = new URLSearchParams(location.search);
+    const invitedBy = qp.get('invited_by');
+    const inviteId = qp.get('invite_id');
+
+    const params = new URLSearchParams();
+    if (invitedBy) params.set('invited_by', invitedBy);
+    if (inviteId) params.set('invite_id', inviteId);
+
+    const deepLink = `biblenow://auth/signup${params.toString() ? '?' + params.toString() : ''}`;
+
+    // Basic platform detection for store fallback
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPad|iPhone|iPod/.test(ua);
+    const isAndroid = /Android/.test(ua);
+
+    // TODO: replace with real store URLs
+    const iosStore = 'https://apps.apple.com/app/id0000000000';
+    const androidStore = 'https://play.google.com/store/apps/details?id=io.biblenow.app';
+
+    const storeLink = document.getElementById('storeLink');
+    storeLink.href = isIOS ? iosStore : isAndroid ? androidStore : '#';
+
+    const openBtn = document.getElementById('openBtn');
+    openBtn.href = deepLink;
+
+    // Try to open the app immediately
+    const status = document.getElementById('status');
+    const fallback = document.getElementById('fallback');
+    let redirected = false;
+
+    function showFallback() {
+      if (redirected) return;
+      fallback.style.display = 'block';
+      status.textContent = 'If the app did not open, tap “Open BibleNOW” or install the app.';
+    }
+
+    // Kick off deep link
+    status.textContent = 'Opening app…';
+    setTimeout(() => { location.href = deepLink; }, 50);
+
+    // If still on page after 2s, show fallback
+    setTimeout(showFallback, 2000);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) redirected = true; });
+  </script>
+</body>
+</html> 

@@ -1,0 +1,29 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build:auth && npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "outputDirectory": ".next",
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/auth/index.html",
+      "has": [{ "type": "host", "value": "auth.biblenow.io" }]
+    },
+    {
+      "source": "/:path*",
+      "destination": "/auth/:path*",
+      "has": [{ "type": "host", "value": "auth.biblenow.io" }]
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+      ]
+    }
+  ]
+}
