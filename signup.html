@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join BibleNOW</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #F8F6F2 0%, #D4AF37 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #462903;
+            margin-bottom: 20px;
+        }
+        .message {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .button {
+            background: #D4AF37;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+        .button:hover {
+            background: #C19B2E;
+        }
+        .fallback {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">BibleNOW</div>
+        <div class="message">
+            You've been invited to join BibleNOW!<br>
+            Opening the app...
+        </div>
+        <a href="#" id="appLink" class="button">Open BibleNOW App</a>
+        <div class="fallback">
+            If the app doesn't open automatically, tap the button above
+        </div>
+    </div>
+
+    <script>
+        // Get the invited_by parameter from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const invitedBy = urlParams.get('invited_by');
+        const inviteId = urlParams.get('invite_id');
+        
+        // Create the deep link URL
+        const params = new URLSearchParams();
+        if (invitedBy) params.set('invited_by', invitedBy);
+        if (inviteId) params.set('invite_id', inviteId);
+        const deepLink = `biblenow://auth/signup${params.toString() ? '?' + params.toString() : ''}`;
+        
+        // Set the button href
+        document.getElementById('appLink').href = deepLink;
+        
+        // Try to open the app immediately
+        window.location.href = deepLink;
+        
+        // Fallback: if the app doesn't open within 2 seconds, show a message
+        setTimeout(() => {
+            // Check if we're still on this page (app didn't open)
+            if (document.visibilityState === 'visible') {
+                document.querySelector('.message').innerHTML = 
+                    'The BibleNOW app will open automatically.<br>' +
+                    'If it doesn\'t open, please tap the button above.';
+            }
+        }, 2000);
+    </script>
+</body>
+</html> 
