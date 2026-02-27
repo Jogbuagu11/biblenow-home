@@ -1,5 +1,7 @@
 'use client';
 
+import { LandingFooter } from '@/components/landing/LandingFooter';
+
 /**
  * Child Safety & Exploitation Policy
  *
@@ -7,12 +9,13 @@
  * Use this in app store forms for child safety / CSAM policy.
  *
  * Design: simple, centered legal page shell similar to external
- * policy/terms pages (no in-app sidebar or bottom nav).
+ * policy/terms pages (no in-app sidebar or bottom nav), with landing footer.
  */
 
 export default function ChildSafetyPage() {
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-900 dark:bg-dark-900 dark:text-gray-100">
+    <div className="min-h-screen flex flex-col bg-gray-50 text-gray-900 dark:bg-dark-900 dark:text-gray-100">
+    <main className="flex-grow">
       <div className="max-w-3xl mx-auto px-4 py-12 md:py-16">
         <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-biblenow-brown dark:text-biblenow-gold mb-6">
           Child Safety &amp; Exploitation Policy
@@ -146,5 +149,7 @@ export default function ChildSafetyPage() {
         </section>
       </div>
     </main>
+    <LandingFooter />
+    </div>
   );
 }
