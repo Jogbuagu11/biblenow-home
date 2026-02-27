@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900 dark:bg-dark-500 dark:text-gray-100;
+  }
+}
+
+@layer components {
+  /* Button Components - modern social */
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white font-semibold py-2.5 px-5 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-500 shadow-sm hover:shadow-md active:scale-[0.98];
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 dark:bg-dark-700 dark:hover:bg-dark-600 text-gray-900 dark:text-gray-100 font-semibold py-2.5 px-5 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400/30 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-500;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary-500/80 text-primary-600 dark:text-primary-400 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white font-semibold py-2.5 px-5 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:ring-offset-2;
+  }
+  
+  /* Card Components - modern social */
+  .card {
+    @apply bg-white dark:bg-dark-300 rounded-2xl shadow-sm border border-gray-200/80 dark:border-dark-200/80 transition-shadow duration-300;
+  }
+  
+  .card-hover {
+    @apply card hover:shadow-md hover:border-gray-300/80 dark:hover:border-dark-200 cursor-pointer transition-all duration-200;
+  }
+  
+  /* Input Components */
+  .input {
+    @apply w-full px-4 py-2.5 border border-gray-200 dark:border-dark-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500/50 bg-white dark:bg-dark-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 transition-colors;
+  }
+  
+  /* Badge Components */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-primary {
+    @apply badge bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200;
+  }
+  
+  .badge-success {
+    @apply badge bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
+  }
+  
+  .badge-live {
+    @apply badge bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200 animate-pulse;
+  }
+  
+  /* Avatar Components */
+  .avatar {
+    @apply rounded-full bg-gray-200 dark:bg-dark-600 flex items-center justify-center object-cover ring-2 ring-white/80 dark:ring-dark-400/80;
+  }
+  
+  .avatar-sm {
+    @apply avatar w-9 h-9;
+  }
+  
+  .avatar-md {
+    @apply avatar w-12 h-12;
+  }
+  
+  .avatar-lg {
+    @apply avatar w-16 h-16;
+  }
+  
+  .avatar-xl {
+    @apply avatar w-24 h-24;
+  }
+  
+  /* Layout Components */
+  .container-main {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .sidebar {
+    @apply fixed inset-y-0 left-0 z-50 w-64 bg-white/95 dark:bg-dark-400/95 backdrop-blur-xl border-r border-gray-200/80 dark:border-dark-200 transform transition-transform duration-300 ease-out;
+  }
+  
+  .sidebar-open {
+    @apply translate-x-0;
+  }
+  
+  .sidebar-closed {
+    @apply -translate-x-full;
+  }
+  
+  /* Auth page (clone of auth-biblenow repo) */
+  .auth-input {
+    @apply bg-gray-700/50 text-biblenow-beige border border-biblenow-gold/50 focus:border-biblenow-gold focus:ring-2 focus:ring-biblenow-gold/30 rounded-md w-full py-2 px-3 transition-all duration-200;
+  }
+  .auth-btn-primary {
+    @apply bg-biblenow-gold hover:bg-biblenow-gold-light text-biblenow-brown font-semibold py-2 px-4 rounded-md shadow-md hover:shadow-lg transition-all duration-200;
+  }
+  .auth-btn-outline {
+    @apply bg-transparent hover:bg-biblenow-gold/10 border border-biblenow-gold text-biblenow-gold font-medium py-2 px-4 rounded-md transition-all duration-200;
+  }
+  .auth-link {
+    @apply text-biblenow-gold hover:text-biblenow-gold-light underline underline-offset-2 transition-colors;
+  }
+  .auth-card {
+    @apply bg-biblenow-brown-light/80 backdrop-blur-sm border border-biblenow-gold/20 rounded-lg shadow-xl p-6 md:p-8;
+  }
+
+  /* Animation Classes */
+  .fade-in {
+    @apply animate-fade-in;
+  }
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .slide-up {
+    @apply animate-slide-up;
+  }
+  
+  /* Custom Scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(156 163 175) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(156 163 175);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(107 114 128);
+  }
+}
+
+@layer utilities {
+  /* Text utilities */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent;
+  }
+  
+  /* Background utilities */
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-primary-500 to-primary-700;
+  }
+  
+  .bg-gradient-secondary {
+    @apply bg-gradient-to-r from-secondary-500 to-secondary-700;
+  }
+  
+  /* Shadow utilities */
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(212, 165, 116, 0.4);
+  }
+  
+  .shadow-glow-primary {
+    box-shadow: 0 0 25px rgba(212, 165, 116, 0.5);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px rgba(212, 165, 116, 0.6);
+  }
+  
+  /* Border utilities */
+  .border-gradient {
+    border-image: linear-gradient(45deg, #f26d1a, #0ea5e9) 1;
+  }
+}
