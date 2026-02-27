@@ -1,5 +1,7 @@
 'use client';
 
+import { Layout } from '@/components/layout/Layout';
+
 /**
  * Child Safety & Exploitation Policy
  *
@@ -9,27 +11,27 @@
 
 export default function ChildSafetyPage() {
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-900 dark:bg-dark-900 dark:text-gray-100">
-      <div className="max-w-3xl mx-auto px-4 py-12 md:py-16">
-        <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-biblenow-brown dark:text-biblenow-gold mb-6">
+    <Layout>
+      <div className="max-w-3xl mx-auto px-4 py-8 md:py-10 lg:py-12">
+        <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-biblenow-brown dark:text-biblenow-gold mb-4 md:mb-6">
           Child Safety &amp; Exploitation Policy
         </h1>
 
-        <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+        <p className="mb-4 text-xs md:text-sm text-gray-600 dark:text-gray-400">
           Last updated:{' '}
           <span className="font-medium text-gray-800 dark:text-gray-200">
             February 26, 2026
           </span>
         </p>
 
-        <section className="space-y-4 text-sm md:text-base leading-relaxed">
+        <section className="space-y-4 text-sm md:text-base leading-relaxed bg-white/80 dark:bg-dark-400/80 border border-gray-200/70 dark:border-dark-300 rounded-2xl shadow-sm p-5 md:p-6">
           <p>
             BibleNOW is committed to providing a safe, Christ‑centered community. We maintain a
             zero‑tolerance policy for child sexual abuse material (CSAM), sexual exploitation of
             minors, grooming, or any behavior that places children at risk.
           </p>
 
-          <h2 className="mt-8 text-xl font-semibold text-biblenow-brown dark:text-biblenow-gold">
+          <h2 className="mt-6 md:mt-8 text-lg md:text-xl font-semibold text-biblenow-brown dark:text-biblenow-gold">
             1. Who the app is for
           </h2>
           <p>
@@ -38,7 +40,7 @@ export default function ChildSafetyPage() {
             any use of the app by minors and to talk with their children about online safety.
           </p>
 
-          <h2 className="mt-8 text-xl font-semibold text-biblenow-brown dark:text-biblenow-gold">
+          <h2 className="mt-6 md:mt-8 text-lg md:text-xl font-semibold text-biblenow-brown dark:text-biblenow-gold">
             2. Zero‑tolerance for child sexual abuse &amp; exploitation
           </h2>
           <p>
@@ -57,7 +59,7 @@ export default function ChildSafetyPage() {
             permanently disable offending accounts and restrict access to BibleNOW.
           </p>
 
-          <h2 className="mt-8 text-xl font-semibold text-biblenow-brown dark:text-biblenow-gold">
+          <h2 className="mt-6 md:mt-8 text-lg md:text-xl font-semibold text-biblenow-brown dark:text-biblenow-gold">
             3. Reporting concerns
           </h2>
           <p>
@@ -82,7 +84,7 @@ export default function ChildSafetyPage() {
             emergency services first, then notify us.
           </p>
 
-          <h2 className="mt-8 text-xl font-semibold text-biblenow-brown dark:text-biblenow-gold">
+          <h2 className="mt-6 md:mt-8 text-lg md:text-xl font-semibold text-biblenow-brown dark:text-biblenow-gold">
             4. Cooperation with law enforcement &amp; hotlines
           </h2>
           <p>
@@ -92,7 +94,7 @@ export default function ChildSafetyPage() {
             enforcement as part of investigations into child exploitation or abuse.
           </p>
 
-          <h2 className="mt-8 text-xl font-semibold text-biblenow-brown dark:text-biblenow-gold">
+          <h2 className="mt-6 md:mt-8 text-lg md:text-xl font-semibold text-biblenow-brown dark:text-biblenow-gold">
             5. Moderation &amp; enforcement
           </h2>
           <p>
@@ -123,7 +125,7 @@ export default function ChildSafetyPage() {
             .
           </p>
 
-          <p className="mt-8 text-sm text-gray-600 dark:text-gray-400">
+          <p className="mt-6 md:mt-8 text-xs md:text-sm text-gray-600 dark:text-gray-400">
             For information on how we collect and use data, please also see our{' '}
             <a
               href="https://policy.biblenow.io"
@@ -142,7 +144,6 @@ export default function ChildSafetyPage() {
           </p>
         </section>
       </div>
-    </main>
+    </Layout>
   );
 }
-
